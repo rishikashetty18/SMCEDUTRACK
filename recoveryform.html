@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Recovery Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500;700&display=swap');
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #99acdf;
+        }
+
+        .container {
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 3rem 5rem;
+            border-radius: .4rem;
+        }
+
+        .container form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .container h2 {
+            font-size: 2.5rem;
+            margin: 2rem;
+        }
+
+        .container form input {
+            font-weight: lighter;
+            border: none;
+        }
+
+        .button {
+            border: none;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            padding: 0.7rem 0.8rem;
+            background: linear-gradient(to right, #8d68c5, #e34494);
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="recovery-form">
+        <form id="recovery-form" onsubmit="resetPassword(); return false;">
+        <label for="email">Email</label>
+        <input type="email" class="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="security-question">Security Question:</label>
+        <select id="security-question" name="security-question" required>
+            <option value="">Select</option>
+            <option value="PetName">What is your pet name?</option>
+            <option value="MotherMaidenName">What is your mother's maiden name?</option>
+            <option value="BirthCity">In which city were you born?</option>
+        </select><br><br>
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer" required><br><br>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" required><br><br>
+
+        <button type="submit" class="button">Reset password</button>
+
+    </form>
+    </div>
+</div>
+</body>
+<script>
+    function resetPassword() {
+        // Collect data from recovery form
+        var email = document.getElementById('email').value;
+        var securityQuestion = document.getElementById('security-question').value;
+        var answer = document.getElementById('answer').value;
+        var newPassword = document.getElementById('new-password').value;
+
+        // Perform client-side validation for new password
+        if (!isValidPassword(newPassword)) {
+            alert("Invalid password. Please ensure it is alphanumeric with at least one number, one letter, and minimum 8 characters.");
+            return;
+        }
+
+        // Send data to server using AJAX
+        // Example:
+        // $.ajax({
+        //     url: 'resetPassword.php',
+        //     type: 'POST',
+        //     data: {
+        //         email: email,
+        //         securityQuestion: securityQuestion,
+        //         answer: answer,
+        //         newPassword: newPassword
+        //     },
+        //     success: function(response) {
+        //         // Handle success response
+        //         // Redirect to faculty login page
+        //         window.location.href = "facultylogin.html";
+        //     },
+        //     error: function(xhr, status, error) {
+        //         // Handle error response
+        //         console.error(xhr.responseText);
+        //     }
+        // });
+
+        // For demonstration, log collected data
+        console.log("Email:", email);
+        console.log("Security Question:", securityQuestion);
+        console.log("Answer:", answer);
+        console.log("New Password:", newPassword);
+
+        // Redirect to faculty login page (for demonstration)
+        window.location.href = "facultylogin.html";
+    }
+
+    function isValidPassword(password) {
+        // Validate password format (alphanumeric with at least one number, one letter, and minimum 8 characters)
+        var passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{8,})$/;
+        return passwordPattern.test(password);
+    }
+</script>
+</html>

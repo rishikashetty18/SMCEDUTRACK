@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Boxicons CSS -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<title>Side Navigation Bar in HTML CSS JavaScript</title>
+<link rel="stylesheet" href="adminstyle.css" />
+<style>
+  /* Hide the form by default */
+  #firstBCAForm {
+    display: none;
+  }
+</style>
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar">
+  <div class="logo_item">
+    <i class="bx bx-menu" id="sidebarOpen"></i>
+    <img src="images/logo.png" alt=""></i>Edu Track
+  </div>
+
+  <div class="search_bar">
+    <input type="text" placeholder="Search" />
+  </div>
+
+  <div class="navbar_content">
+    <i class="bi bi-grid"></i>
+    <i class='bx bx-sun' id="darkLight"></i>
+    
+    <!-- Profile Image -->
+    <img src="images/profile.jpg" alt="" class="profile" id="profileImg" />
+    
+    <!-- Logout Button (initially hidden) -->
+    <button id="logoutBtn" style="display: none;">Logout</button>
+</div>
+</nav>
+
+<!-- sidebar -->
+<nav class="sidebar">
+  <div class="menu_content">
+    <ul class="menu_items">
+      <div class="menu_title menu_dahsboard"></div>
+      <!-- start -->
+
+      
+      
+      <li class="item">
+        <a href="#" class="nav_link submenu_item" onclick="showFirstBCAForm()">
+          <span class="navlink_icon">
+          <i class="bx bx-file"></i>
+          </span>
+          <span class="navlink">Results</span>
+          <i class="bx bx-chevron-right arrow-left"></i>
+        </a>
+
+        <ul class="menu_items submenu">
+          <a href="#" class="nav_link sublink" onclick="showFirstBCAForm()">First BCA</a>
+          <a href="#" class="nav_link sublink">Second BCA</a>
+          <a href="#" class="nav_link sublink">Third BCA</a>
+          <a href="#" class="nav_link sublink">First BCOM</a>
+          <a href="#" class="nav_link sublink">Second BCOM</a>
+          <a href="#" class="nav_link sublink">Third BCOM</a>
+          <a href="#" class="nav_link sublink">First BA</a>
+          <a href="#" class="nav_link sublink">Second BA</a>
+          <a href="thirdbaform.php" class="nav_link sublink">Third BA</a>
+        </ul>
+      </li>
+      
+      <!-- Sidebar Open / Close -->
+      <div class="bottom_content">
+        <div class="bottom expand_sidebar">
+          <span> Expand</span>
+          <i class='bx bx-log-in' ></i>
+        </div>
+        <div class="bottom collapse_sidebar">
+          <span> Collapse</span>
+          <i class='bx bx-log-out'></i>
+        </div>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+<!-- Form for First BCA Results -->
+<form id="firstBCAForm" style="display: none;">
+  <h2>First BCA Results</h2>
+  <label for="studentID">Student ID:</label>
+  <input type="text" id="studentID" name="studentID"><br><br>
+  <label for="class">Class:</label>
+  <input type="text" id="class" name="class"><br><br>
+  <label for="internal1">Internal 1:</label>
+  <input type="text" id="internal1" name="internal1"><br><br>
+  <label for="internal2">Internal 2:</label>
+  <input type="text" id="internal2" name="internal2"><br><br>
+  <label for="seminar">Seminar:</label>
+  <input type="text" id="seminar" name="seminar"><br><br>
+  <label for="assignment">Assignment:</label>
+  <input type="text" id="assignment" name="assignment"><br><br>
+  <label for="percentage">Percentage:</label>
+  <input type="text" id="percentage" name="percentage"><br><br>
+  <label for="grade">Grade:</label>
+  <input type="text" id="grade" name="grade"><br><br>
+</form>
+
+<script src="adminscript.js"></script>
+
+<script>
+  function showFirstBCAForm() {
+    // Toggle the visibility of the form
+    var form = document.getElementById("firstBCAForm");
+    form.style.display = (form.style.display === "none") ? "block" : "none";
+  }
+</script>
+
+</body>
+</html>

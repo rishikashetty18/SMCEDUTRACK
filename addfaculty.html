@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border-radius: 0;
+        }
+
+        .btn-flat {
+            border-radius: 0;
+        }
+
+        .btn-flat.bg-gradient-primary {
+            background-image: linear-gradient(to right, #007bff, #0069d9);
+            color: #fff;
+        }
+
+        .btn-flat.bg-gradient-secondary {
+            background-image: linear-gradient(to right, #6c757d, #5a6268);
+            color: #fff;
+        }
+
+        .btn-flat:hover {
+            opacity: 0.8;
+        }
+
+        .alert {
+            margin-bottom: 10px;
+            border-radius: 0;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1><center>Manage Faculty</center></h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card card-outline card-primary">
+                    <div class="card-body">
+                        <form id="manage-student" action="display_faculty.php">
+                            
+
+                            <input type="hidden" name="id" value="">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="msg" class="alert"></div>
+                                    
+                                    <div class="form-group">
+                                        <label for="firstname">First Name</label>
+                                        <input type="text" id="firstname" class="form-control" name="firstname"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middlename">Middle Name</label>
+                                        <input type="text" id="middlename" class="form-control" name="middlename">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name</label>
+                                        <input type="text" id="lastname" class="form-control" name="lastname"
+                                            required>
+                                    </div>
+                                </div><br><br>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select id="gender" class="form-control" name="gender" required>
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <textarea id="address" class="form-control" name="address" rows="4"></textarea>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer border-top border-info">
+                        <div class="d-flex w-100 justify-content-center align-items-center">
+                            <button class="btn btn-flat bg-gradient-primary mx-2" form="manage-student"
+                                id="save-btn">Save</button>
+                                <button class="btn btn-flat bg-gradient-secondary mx-2" id="cancel-btn">Cancel</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('manage-student');
+        const successMessage = document.createElement('div');
+        successMessage.textContent = 'Data saved successfully!';
+        successMessage.className = 'alert alert-success d-none success-message';
+        form.insertBefore(successMessage, form.firstChild); // Insert success message at the top of the form
+    
+        const cancelButton = document.getElementById('cancel-btn');
+        cancelButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default action of the button
+            
+            // Reset all form fields to their default values
+            form.reset();
+    
+            // Hide the success message if it's currently visible
+            successMessage.classList.add('d-none');
+        });
+    
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+    
+            // Here you would typically perform the actual save operation, like sending data to a server
+            // For this example, we'll just show the success message
+    
+            successMessage.classList.remove('d-none'); // Show the success message
+            setTimeout(function () {
+                successMessage.classList.add('d-none'); // Hide the success message after a delay
+            }, 3000); // Adjust the delay (in milliseconds) as needed
+        });
+    });
+    </script>
+</body>
+ 
+</html>
